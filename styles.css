@@ -172,6 +172,17 @@ body {
   transform: translateY(-1px);
 }
 
+.btn__mark {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
+  margin-right: 0.4rem;
+}
+
+.btn--primary .btn__mark {
+  filter: brightness(0) invert(1);
+}
+
 /* Sections */
 .section {
   margin-bottom: 2.5rem;
@@ -342,6 +353,63 @@ body {
   line-height: 1.45;
 }
 
+/* Piconera Tech: un bloque, la web tiene el detalle */
+.studio-card {
+  display: block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.studio-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.studio-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.studio-card__banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding: 1.35rem 1.5rem 1.1rem;
+}
+
+.studio-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1rem 1.25rem 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+.studio-card__desc {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.studio-card__cta {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.studio-card:hover .studio-card__cta {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .text-link {
   color: var(--accent);
   font-weight: 500;
@@ -407,6 +475,25 @@ body {
   outline-offset: 2px;
 }
 
+.link-card--brand {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.link-card__mark {
+  width: 2.4rem;
+  height: 2.4rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.link-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
 .link-card__label {
   font-weight: 600;
   font-size: 1rem;
@@ -417,28 +504,6 @@ body {
   font-size: 0.85rem;
   color: var(--muted);
   font-weight: 400;
-}
-
-/* Competencias (chips) */
-.chips {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.chips li {
-  display: inline-block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.4rem 0.8rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  color: var(--ink);
-  box-shadow: 0 1px 0 var(--border);
 }
 
 /* Timeline / cards */
@@ -544,27 +609,6 @@ body {
 
 .more-text--tight {
   margin: 0.35rem 0 0;
-}
-
-.share-list {
-  margin: 0 0 1.15rem;
-  padding-left: 1.35rem;
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.share-list li {
-  margin-bottom: 0.85rem;
-}
-
-.share-list li:last-child {
-  margin-bottom: 0;
-}
-
-.share-list cite {
-  font-style: normal;
-  font-weight: 600;
-  color: var(--ink);
 }
 
 /* YouTube 16:9 */
