@@ -201,6 +201,10 @@ body {
   margin-top: 0;
 }
 
+.section .deflist + .subsection__title {
+  margin-top: 1.75rem;
+}
+
 .lede {
   margin: 0;
   color: var(--muted);
