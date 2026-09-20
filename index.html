@@ -19,29 +19,6 @@
   </head>
   <body>
     <a class="skip-link" href="#contenido">Ir al contenido</a>
-    <nav class="site-nav" aria-label="Secciones del currículum">
-      <div class="site-nav__bar">
-        <button
-          type="button"
-          class="site-nav__burger"
-          id="nav-btn"
-          aria-expanded="false"
-          aria-controls="site-menu"
-        >
-          <span class="site-nav__burger-icon" aria-hidden="true"></span>
-          <span class="site-nav__burger-text">Menú</span>
-        </button>
-      </div>
-      <ul class="site-nav__list" id="site-menu">
-        <li><a href="#resumen">Resumen</a></li>
-        <li><a href="#formacion">Formación</a></li>
-        <li><a href="#experiencia">Experiencia</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#enfoque">Enfoque</a></li>
-        <li><a href="#divulgacion">Divulgación</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
     <div class="page">
       <header class="hero" role="banner">
         <p class="hero__eyebrow">Currículum</p>
@@ -626,33 +603,6 @@
     </div>
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
-      (function () {
-        var btn = document.getElementById("nav-btn");
-        var menu = document.getElementById("site-menu");
-        var nav = document.querySelector(".site-nav");
-        if (!btn || !menu || !nav) return;
-        function setOpen(open) {
-          btn.setAttribute("aria-expanded", open ? "true" : "false");
-          nav.classList.toggle("is-open", open);
-        }
-        btn.addEventListener("click", function () {
-          setOpen(btn.getAttribute("aria-expanded") !== "true");
-        });
-        menu.querySelectorAll("a").forEach(function (link) {
-          link.addEventListener("click", function () {
-            setOpen(false);
-          });
-        });
-        document.addEventListener("keydown", function (event) {
-          if (event.key === "Escape") setOpen(false);
-        });
-        document.addEventListener("click", function (event) {
-          if (!nav.contains(event.target)) setOpen(false);
-        });
-        window.addEventListener("resize", function () {
-          if (window.matchMedia("(min-width: 720px)").matches) setOpen(false);
-        });
-      })();
     </script>
   </body>
 </html>
