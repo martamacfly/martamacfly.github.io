@@ -19,6 +19,29 @@
   </head>
   <body>
     <a class="skip-link" href="#contenido">Ir al contenido</a>
+    <nav class="site-nav" aria-label="Secciones del currículum">
+      <div class="site-nav__bar">
+        <button
+          type="button"
+          class="site-nav__burger"
+          id="nav-btn"
+          aria-expanded="false"
+          aria-controls="site-menu"
+        >
+          <span class="site-nav__burger-icon" aria-hidden="true"></span>
+          <span class="site-nav__burger-text">Menú</span>
+        </button>
+      </div>
+      <ul class="site-nav__list" id="site-menu">
+        <li><a href="#resumen">Resumen</a></li>
+        <li><a href="#formacion">Formación</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#enfoque">Enfoque</a></li>
+        <li><a href="#divulgacion">Divulgación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
     <div class="page">
       <header class="hero" role="banner">
         <p class="hero__eyebrow">Currículum</p>
@@ -86,7 +109,7 @@
       </header>
 
       <main id="contenido" class="main">
-        <section class="section" aria-labelledby="perfil-title">
+        <section id="resumen" class="section" aria-labelledby="perfil-title">
           <h2 id="perfil-title" class="section__title">Resumen</h2>
           <p class="lede">
             Profesional de la calidad del software (QA) con recorrido en producto SaaS, gaming y
@@ -113,7 +136,7 @@
           </p>
         </section>
 
-        <section class="section" aria-labelledby="formacion-title">
+        <section id="formacion" class="section" aria-labelledby="formacion-title">
           <h2 id="formacion-title" class="section__title">Formación e idiomas</h2>
           <dl class="deflist">
             <div class="deflist__row">
@@ -150,7 +173,7 @@
           </dl>
         </section>
 
-        <section class="section" aria-labelledby="exp-title">
+        <section id="experiencia" class="section" aria-labelledby="exp-title">
           <h2 id="exp-title" class="section__title">Experiencia</h2>
           <ol class="timeline" role="list">
             <li class="card">
@@ -297,7 +320,7 @@
           </ol>
         </section>
 
-        <section class="section" aria-labelledby="proyectos-title">
+        <section id="proyectos" class="section" aria-labelledby="proyectos-title">
           <h2 id="proyectos-title" class="section__title">Proyectos</h2>
           <a
             class="studio-card"
@@ -322,14 +345,14 @@
           </a>
         </section>
 
-        <section class="section section--tight" aria-labelledby="enfoque-title">
+        <section id="enfoque" class="section section--tight" aria-labelledby="enfoque-title">
           <h2 id="enfoque-title" class="section__title">Enfoque</h2>
           <blockquote class="quote">
             <p>«No solo se trata de encontrar bugs, sino de prevenirlos.»</p>
           </blockquote>
         </section>
 
-        <section class="section" aria-labelledby="divulgacion-title">
+        <section id="divulgacion" class="section" aria-labelledby="divulgacion-title">
           <h2 id="divulgacion-title" class="section__title">Divulgación y eventos</h2>
 
           <h3 class="subsection__title">Mes de QA (LUG Spain)</h3>
@@ -518,7 +541,7 @@
           </a>
         </section>
 
-        <section class="section" aria-labelledby="contacto-title">
+        <section id="contacto" class="section" aria-labelledby="contacto-title">
           <h2 id="contacto-title" class="section__title">Contacto</h2>
           <p class="lede lede--compact more-text--spaced">
             Estoy abierta a nuevas ideas y retos técnicos. Escríbeme o encuéntrame aquí:
@@ -603,6 +626,33 @@
     </div>
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
+      (function () {
+        var btn = document.getElementById("nav-btn");
+        var menu = document.getElementById("site-menu");
+        var nav = document.querySelector(".site-nav");
+        if (!btn || !menu || !nav) return;
+        function setOpen(open) {
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+          nav.classList.toggle("is-open", open);
+        }
+        btn.addEventListener("click", function () {
+          setOpen(btn.getAttribute("aria-expanded") !== "true");
+        });
+        menu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            setOpen(false);
+          });
+        });
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") setOpen(false);
+        });
+        document.addEventListener("click", function (event) {
+          if (!nav.contains(event.target)) setOpen(false);
+        });
+        window.addEventListener("resize", function () {
+          if (window.matchMedia("(min-width: 720px)").matches) setOpen(false);
+        });
+      })();
     </script>
   </body>
 </html>
