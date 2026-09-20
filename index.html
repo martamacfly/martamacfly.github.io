@@ -17,7 +17,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body id="top">
     <a class="skip-link" href="#contenido">Ir al contenido</a>
     <div class="page">
       <header class="hero" role="banner">
@@ -601,8 +601,45 @@
         <p class="footer__meta">Última actualización del sitio: septiembre de 2026</p>
       </footer>
     </div>
+    <a
+      class="to-top"
+      href="#top"
+      id="to-top"
+      aria-label="Volver arriba"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <svg class="to-top__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 14l6-6 6 6"
+        />
+      </svg>
+    </a>
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
+      (function () {
+        var btn = document.getElementById("to-top");
+        if (!btn) return;
+        function setVisible(visible) {
+          btn.classList.toggle("is-visible", visible);
+          btn.setAttribute("aria-hidden", visible ? "false" : "true");
+          if (visible) btn.removeAttribute("tabindex");
+          else btn.setAttribute("tabindex", "-1");
+        }
+        function update() {
+          var doc = document.documentElement;
+          var remaining = doc.scrollHeight - window.scrollY - window.innerHeight;
+          setVisible(remaining <= Math.max(360, window.innerHeight * 0.65));
+        }
+        window.addEventListener("scroll", update, { passive: true });
+        window.addEventListener("resize", update);
+        update();
+      })();
     </script>
   </body>
 </html>
