@@ -720,6 +720,10 @@ body {
   width: 100%;
 }
 
+.btn--block + .btn--block {
+  margin-top: 0.65rem;
+}
+
 /* Footer */
 .footer {
   text-align: center;
